@@ -1,6 +1,6 @@
 /*-- scss:defaults --*/
 
-// Palette dello storyboard («Linguaggio visivo»)
+// Palette dello storyboard ("Linguaggio visivo")
 $fondo: #FAFAF7;
 $grigio-1: #E5E5E2;
 $grigio-2: #C9C9C5;
@@ -191,6 +191,30 @@ $grigio-pie: #8A8A86;
   color: $petrolio;
   margin: 0 0 56px 0;
 }
+// Slide 16: la risposta chiude la slide, sotto le tre righe
+.reveal section.risposta .sei-parole {
+  font-size: 60px;
+  font-weight: 600;
+  margin: 72px 0 0 0;
+}
+// Slide 16: spazio fra il titolo e le tre righe, terza colonna più larga
+.reveal section.risposta .visione {
+  margin-top: 48px;
+  grid-template-columns: 110px 410px 1fr;
+  column-gap: 30px;
+}
+// Slide 16: i tre simboli dei metodi accanto al titolo
+.reveal .tre-simboli {
+  display: inline-flex;
+  gap: 20px;
+  margin-left: 36px;
+  vertical-align: middle;
+  color: $petrolio;
+}
+.reveal .tre-simboli svg {
+  width: 60px;
+  height: 50px;
+}
 .reveal .visione {
   display: grid;
   grid-template-columns: 110px 470px 1fr;
@@ -314,7 +338,7 @@ $grigio-pie: #8A8A86;
   color: #4A4A48;
   margin-top: 10px;
 }
-.reveal .sim-volo .didascalie div { width: 48%; text-align: center; }
+.reveal .sim-volo .didascalie div { width: 48%; text-align: center; text-wrap: balance; }
 .reveal .sim-volo .didascalie b { color: #1F6F8B; }
 
 // Barra di avanzamento in alto, sottile, nel colore d'accento
@@ -386,4 +410,38 @@ $grigio-pie: #8A8A86;
 .reveal .contatto .mail {
   color: $petrolio;
   font-weight: 700;
+}
+
+// Slide dei contatti: codice QR e link breve alle slide, in alto a destra.
+// Link in grigio scuro, non in blu: il blu resta agli indirizzi email.
+.reveal .qr-blocco {
+  position: absolute;
+  top: 40px;
+  right: 80px;
+  text-align: center;
+  white-space: nowrap;
+}
+.reveal .qr-blocco svg.qr {
+  display: block;
+  width: 340px;
+  height: 340px;
+  margin: 0 auto 6px auto;
+}
+.reveal .qr-link {
+  font-size: 38px;
+  font-weight: 700;
+  color: $grigio-5;
+}
+
+// Slide 17: il grazie in fondo, centrato, con i tre simboli dei metodi in gruppo, come nella slide 16
+.reveal .grazie {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 110px;
+  text-align: center;
+  font-size: 56px;
+  font-weight: 600;
+  color: $grigio-5;
+  white-space: nowrap;
 }

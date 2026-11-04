@@ -1,6 +1,8 @@
 ---
 pagetitle: "Sanità digitale sicura e sostenibile"
 lang: it
+filters:
+  - accenti.lua
 format:
   revealjs:
     theme: [default, slide.scss]
@@ -57,11 +59,31 @@ Digital Security Festival 2026, Padova, 4 novembre 2026
 Testi, immagini e slide preparati con il supporto di strumenti di intelligenza artificiale generativa. Contenuti, scelte e verifiche sono dell'autore.
 :::
 
+::: notes
+:::: {.gobbo}
+- esperienze del gruppo, non i nostri progetti
+- [un modo di fare ricerca]{.blu} con i dati sanitari
+- **come funziona · che cosa cambia · limiti**, su tre processi
+::::
+
+Sono Corrado Lanera, ricercatore all'Università di Padova, nell'Unità di Biostatistica, Epidemiologia e Sanità Pubblica, e lavoro con il gruppo BIOSTAT-X all'Istituto di Ricerca Pediatrica Città della Speranza. Quello che vi racconterò oggi viene dalle esperienze e dalle linee di ricerca attuali del nostro gruppo. Non entrerò nei dettagli dei nostri progetti, quanto piuttosto di un modo di fare ricerca con i dati sanitari che si evolve da quello tradizionale per venire incontro ai temi di sicurezza e sostenibilità. Vedremo quindi **come funziona**, **che cosa cambia**, e dove sono **i suoi limiti**, esplorando tre tipi di processi a cui possiamo applicarlo.
+:::
 
 ## Quando i vostri dati entrano in una ricerca, dove vanno? {#s02}
 
 ![](img/slide02.png){.immagine fig-alt="Una persona di spalle; i frammenti della sua storia clinica si allontanano verso destra."}
 
+::: notes
+:::: {.gobbo}
+- la ricerca vive di dati: [di molte persone]{.blu} (diagnosi, esami, immagini...)
+- [fra i dati più delicati]{.rosso}: la salute, a volte la famiglia
+- ☞ la domanda: "dove vanno, e che cosa succede loro?"
+::::
+
+La ricerca in sanità si basa sui dati. Per capire se una cura funziona servono informazioni di molte persone: diagnosi, esami, immagini, esiti. E questi sono fra i dati più delicati che esistano: riguardano la salute di una persona, e a volte quella della sua famiglia.
+
+Pensiamo e teniamo a mente sempre questa domanda: quando i vostri dati entrano in una ricerca, dove vanno, e che cosa succede loro?
+:::
 
 ## Studi su più centri: l'approccio centralizzato sposta i dati {#s03}
 
@@ -86,6 +108,14 @@ Testi, immagini e slide preparati con il supporto di strumenti di intelligenza a
 </svg>
 ```
 
+::: notes
+:::: {.gobbo}
+- "normalmente" [vengono copiati]{.rosso}
+- una copia consegnata [non si riprende]{.rosso}
+::::
+
+Normalmente la risposta è: vengono copiati. Un ospedale da solo ha troppo pochi pazienti, o pazienti troppo simili fra loro per età, provenienza o gravità, per dare risposte che valgano anche altrove e possano essere generalizzate con fiducia. Questo salta particolarmente agli occhi per malattie rare, dove i pochi casi sono sparsi in molti centri. Così quasi ogni studio fra più ospedali raccoglie copie dei dati di tutti in un unico posto, e le analizza lì. Funziona, ma ogni copia è un posto in più da proteggere, ogni trasferimento un accordo in più da negoziare, e una copia consegnata non si riprende.
+:::
 
 ## Studi su più centri: l'approccio federato sposta l'analisi {#s04}
 
@@ -120,6 +150,19 @@ Testi, immagini e slide preparati con il supporto di strumenti di intelligenza a
 </svg>
 ```
 
+::: notes
+:::: {.gobbo}
+- [la ricerca va dove stanno i dati]{.blu}
+- federato: centri autonomi, senza mettere in comune i dati
+- non solo la tecnica: [cambia il modo di fare ricerca]{.blu}
+- ☞ tre cose: domanda, modello, generatore
+- **come funziona · che cosa cambia · limiti**, per ognuna
+::::
+
+Esiste un'altra strada: invece di portare i dati a chi fa ricerca, portare la ricerca dove i dati stanno già. La federazione non è una novità in reti di ricerca in Europa e nel mondo, in alcune forme è molto matura per altre è più giovane. Il punto è che non cambia solo la tecnica: cambia il modo di fare ricerca fra più centri, di usare i dati sanitari, di far parlare la stessa lingua a ospedali diversi.
+
+In breve, federato vuol dire: centri che restano autonomi e collaborano senza mettere in comune i dati. In generale, e quello che vi porto qui oggi, ai dati si possono portare tre cose: una domanda, un modello da allenare, un generatore di dati. Le vediamo una alla volta, sempre con le stesse tre domande: **come funziona**, **che cosa cambia**, quali **limiti** ha.
+:::
 
 ## Analisi federata {#t1 .sezione}
 
@@ -133,6 +176,12 @@ federated analysis
 
 ::: {.cosa}
 **Che cos'è.** Un'analisi statistica su dati che restano in più centri: ogni centro esegue lo stesso calcolo sui propri dati e restituisce solo risultati aggregati, che chi analizza combina.
+:::
+
+::: notes
+:::: {.gobbo}
+- [lo stesso calcolo in ogni centro]{.blu}, tornano solo aggregati
+::::
 :::
 
 ## Calcoli nei centri, risultato globale {#s05 .con-mossa}
@@ -151,7 +200,7 @@ federated analysis
     <path d="M226 370 H1080 C1270 370 1270 324 1446 324"/>
     <path d="M226 580 H1080 C1270 580 1270 372 1446 372"/>
   </g>
-  <text x="920" y="88" class="e">«quanto scende in media la glicemia?»</text>
+  <text x="920" y="88" class="e">“quanto scende in media la glicemia?”</text>
   <use href="#busta" class="a" x="940" y="63" width="120" height="84"/>
   <use href="#busta" class="a" x="940" y="273" width="120" height="84"/>
   <use href="#busta" class="a" x="940" y="483" width="120" height="84"/>
@@ -175,6 +224,18 @@ federated analysis
 </svg>
 ```
 
+::: notes
+:::: {.gobbo}
+- **Come funziona** · terapia per il diabete, glicemia
+- [la stessa domanda a ogni ospedale]{.blu}
+- tornano due numeri: pazienti e media
+- [lo stesso numero dei dati riuniti]{.blu}, "se tutti i centri rispondono"
+::::
+
+**Come funziona.** Prendiamo una domanda semplice: con una certa terapia, per esempio, per il diabete, di quanto scende in media la glicemia? Lo studio coinvolge più ospedali, e ognuno tiene i dati dei propri pazienti nel proprio sistema. Chi analizza, invece di ricevere i dati, manda a ogni ospedale la stessa richiesta; ogni ospedale fa il calcolo sui propri dati e restituisce solo due numeri: quanti pazienti ha trattato e di quanto è scesa in media la loro glicemia.
+
+Con questi due numeri si ricostruisce la media di tutti: si moltiplica la media di ogni ospedale per il numero dei suoi pazienti, si somma e si divide per il totale. Qui fa 22,8 milligrammi per decilitro: lo stesso numero che si otterrebbe riunendo i dati di tutti i cento pazienti, non un'approssimazione, a patto che tutti i centri rispondano.
+:::
 
 ## Controlli e formato comune in ogni centro {#s06 .con-mossa}
 
@@ -218,6 +279,21 @@ federated analysis
 </svg>
 ```
 
+::: notes
+:::: {.gobbo}
+- **Chi entra** · [ogni ospedale decide chi interroga]{.blu}
+- ☞ registro e chiave: identificato, autorizzato, registrato
+- **Che cosa esce** · ☞ la barra rossa: "la media di un paziente [È]{.rosso} il suo valore"
+- [ferma i casi evidenti, non tutti]{.rosso}
+- **Formato comune** · ☞ età e data di nascita
+- attenzione a risultato [plausibile e sbagliato]{.rosso}
+- [ogni centro armonizza i suoi dati]{.blu}; riuniti, una sola al centro
+::::
+
+L'aspetto cruciale su cui focalizzarsi è che ogni ospedale decide chi può interrogarlo, chiaramente dopo il parere del comitato etico sullo studio, sentito il responsabile della protezione dei dati e con un accordo fra i centri, di solito però più semplice di quello per un trasferimento. Chi interroga deve essere identificato e autorizzato per quello studio, e le sue richieste registrate. Prima di restituire un risultato, il sistema dell'ospedale applica regole di prudenza: un risultato calcolato su meno pazienti di una soglia decisa dal centro, per esempio cinque, non esce: la media di un solo paziente è il suo valore. Sono regole che fermano i casi più evidenti, non tutti.
+
+Inoltre, e del resto, i dati dei vari centri devono parlare la stessa lingua: se un centro registra l'età e un altro la data di nascita, la domanda fallisce o, peggio, dà un risultato plausibile e sbagliato. In federato la traduzione verso un dizionario comune si fa in ogni centro, una volta, e poi si mantiene, senza cambiare il modo in cui l'ospedale lavora; e serve anche agli studi successivi. Con i dati riuniti, invece, la traduzione la fa di solito chi li riceve, per tutti i centri insieme.
+:::
 
 ## Chi controlla l'accesso ai dati {#s07 .con-mossa}
 
@@ -228,10 +304,20 @@ federated analysis
 ```{=html}
 <div class="sim-volo">
   <img src="img/slide07.png" alt="A sinistra una copia dei dati passa di mano in mano; a destra il responsabile del centro con la mano su un interruttore davanti all'ospedale, e l'analista con in mano solo un risultato.">
-  <div class="didascalie"><div><b style="color:#B5452F">copia dei dati</b>: passa di mano in mano, non si ritira</div><div><b>analisi federata</b>: il centro concede e revoca l’accesso; escono solo risultati</div></div>
+  <div class="didascalie"><div><b style="color:#B5452F">copia dei dati</b>: passa di mano in mano, non si ritira</div><div><b>analisi federata</b>: il centro concede e revoca le interrogazioni; escono solo risultati</div></div>
 </div>
 ```
 
+::: notes
+:::: {.gobbo}
+- **Che cosa cambia**
+- chi analizza riceve [solo risultati]{.blu}
+- "la revoca vale per le domande successive"
+- [il sistema nel centro va protetto]{.rosso}
+::::
+
+**Che cosa cambia.** Cambia chi ha il controllo: chi custodisce i dati non concede l'accesso ai dati, ma la possibilità di fare interrogazioni ammesse e autorizzate, e può revocarla. Inoltre, chi analizza, non riceve i dati dei pazienti, ma solo risultati. Da osservare comunque che ciò che è già uscito resta a chi l'ha ottenuto: un'eventuale revoca vale per le domande successive non cancella dati o risultati già inviati. Inoltre, altrettanto chiaramente, il sistema che nell'ospedale fa i calcoli va protetto come ogni sistema che custodisce dati sanitari.
+:::
 
 ## Limiti dell'analisi federata {#s08 .con-mossa}
 
@@ -275,6 +361,25 @@ federated analysis
 </div>
 ```
 
+::: notes
+:::: {.gobbo}
+- **Limiti** · [riducono il rischio, non lo azzerano]{.rosso}
+- domande combinate: 31 meno 30 = una persona
+- "pseudonimizzati, non anonimi": restano dati personali
+- errori invisibili: [verificare ogni centro, a ogni cambiamento]{.blu}
+- casi rari: centri specializzati, o un registro ([lì si copia]{.rosso})
+::::
+
+**Limiti.** Ci si protegge da chi analizza e chiede troppo, da un sistema compromesso, da un errore di configurazione; e le difese riducono il rischio, non lo azzerano.
+
+Combinando molte richieste si può tentare di ricostruire qualcosa di un singolo paziente: se "quanti pazienti?" dà 31 e "quanti sotto gli 80 anni?" dà 30, la differenza riguarda una persona sola, e ogni coppia di risposte simili parla di lei; i controlli e i registri delle richieste rendono questi tentativi più difficili, non impossibili.
+
+Nell'ospedale i dati usati per l'analisi sono di solito pseudonimizzati, non anonimi: il nome è sostituito da un codice, ma con la chiave, o incrociando altre informazioni, il collegamento con la persona resta possibile. Restano dati personali, e il metodo da solo non rende uno studio conforme alle norme.
+
+Poi, gli errori più pericolosi sono quelli in cui tutto sembra funzionare: una protezione che risulta attiva ed è spenta, un centro che raccoglie una versione diversa dello studio. Per questo ogni centro va verificato, prima di cominciare e a ogni cambiamento, con controlli automatici che trovano gli errori che si sanno cercare.
+
+Infine, i casi rari. I controlli contano i pazienti di ogni ospedale: se un ospedale ne ha due o tre, quasi ogni numero calcolato su di loro dice qualcosa di loro, e la richiesta viene rifiutata. Non vuol dire escludere quei pazienti, ma scegliere la strada adatta. In parte i casi si concentrano già in centri specializzati, e federare quei centri funziona; dove restano dispersi, si possono riunire in un registro, che diventa un centro come gli altri: lì però si torna a copiare, una volta e con regole chiare.
+:::
 
 ## Apprendimento federato {#t2 .sezione}
 
@@ -290,6 +395,14 @@ federated learning
 **Che cos'è.** Un modello di apprendimento automatico (machine learning) allenato su dati che restano in più centri: il coordinatore manda a tutti lo stesso modello, ogni centro lo allena sui propri dati e rimanda solo i suoi aggiornamenti, non i dati.
 :::
 
+::: notes
+:::: {.gobbo}
+- oltre la statistica classica: [una lesione in un'immagine]{.blu}
+- [serve un modello che impara dagli esempi]{.blu}, da molti centri
+::::
+
+Con i metodi di analisi federata, mandiamo una domanda e ci ritorna un risultato, e chi custodisce i dati decide chi e cosa è autorizzato a chiedere. Può essere interessante e utile però fare domande oltre l'analisi statistica classica, come per esempio: riconoscere una lesione in un'immagine. In questi casi serve un modello che impara dagli esempi: una formula costruita sui dati, che dai valori di un paziente ricava una previsione. Per l'addestramento, tipicamente, servono molti esempi, da molti centri.
+:::
 
 ## Allenamento nei centri, aggiornamenti al coordinatore {#s09 .con-mossa}
 
@@ -331,12 +444,22 @@ federated learning
 </svg>
 ```
 
+::: notes
+:::: {.gobbo}
+- **Come funziona** · [viaggia il modello]{.blu}
+- ☞ il ciclo: 1, 2, 3, 4
+- tornano [aggiornamenti, non dati]{.blu}
+- "un testo scritto a più mani": bozza, correzioni, bozza nuova
+::::
+
+**Come funziona.** L'apprendimento federato fa viaggiare il modello. Un coordinatore prepara un modello di partenza e lo manda ai centri. Ogni centro lo allena per un tratto sui propri dati e rimanda indietro non i dati, ma i suoi aggiornamenti del modello: i numeri che descrivono come cambiare il modello a seguito di ciò che ha imparato. Il coordinatore li combina in un modello comune, lo rimanda, e si ricomincia, per molti giri. Funziona come un testo scritto a più mani: la stessa bozza va a tutti, ognuno la corregge secondo la propria esperienza, chi coordina combina le correzioni in una bozza nuova e la rimanda. Non viaggiano i dati ma le correzioni al modello proposto.
+:::
 
 ## Analisi federata e apprendimento federato a confronto {#s10 .con-mossa}
 
 ```{=html}
-<div class="mossa"><svg viewBox="-50 -50 100 100"><use href="#ingr" x="-50" y="-50" width="100" height="100"/></svg><span>apprendimento federato · che cosa cambia, limiti</span></div>
-<svg class="schema" viewBox="0 0 1760 800" role="img" aria-label="A sinistra, analisi federata: tre ospedali restituiscono all'analista tasselli che combaciano esattamente, uguale ai dati riuniti, per conteggi, medie e molti modelli, ma i risultati possono esporre dati. A destra, apprendimento federato: tre ospedali mandano al coordinatore aggiornamenti diversi, che lui combina per più giri; il risultato dipende da come si allena, e gli aggiornamenti possono esporre dati.">
+<div class="mossa"><svg viewBox="-50 -50 100 100"><use href="#ingr" x="-50" y="-50" width="100" height="100"/></svg><span>analisi e apprendimento federati · che cosa cambia, limiti</span></div>
+<svg class="schema" viewBox="0 0 1760 800" role="img" aria-label="A sinistra, analisi federata: tre ospedali restituiscono all'analista tasselli che combaciano esattamente, uguale ai dati riuniti, per conteggi e medie, ma i risultati possono esporre dati. A destra, apprendimento federato: tre ospedali mandano al coordinatore aggiornamenti diversi, che lui combina per più giri; il risultato dipende da come si allena, e gli aggiornamenti possono esporre dati.">
   <use href="#busta" class="a" x="0" y="8" width="72" height="50"/>
   <text x="92" y="48" class="t">analisi federata</text>
   <use href="#ingr" class="a" x="900" y="2" width="58" height="58"/>
@@ -361,7 +484,7 @@ federated learning
   <use href="#pers" class="g" x="510" y="230" width="100" height="137"/>
   <text x="560" y="410" class="m">analista</text>
   <text x="560" y="650" class="t m">= dati riuniti</text>
-  <text x="560" y="705" class="p m">per conteggi, medie e molti modelli</text>
+  <text x="560" y="705" class="p m">per conteggi e medie</text>
   <text x="560" y="760" class="r m">i risultati possono esporre dati</text>
   <!-- apprendimento federato: allenamenti da combinare, per più giri -->
   <use href="#osp-dati" x="900" y="110" width="144" height="120"/>
@@ -384,21 +507,45 @@ federated learning
 </svg>
 ```
 
+::: notes
+:::: {.gobbo}
+- non tanto giri multipli: [dove sta la rete]{.blu}
+- analisi: [pezzi esatti di un calcolo]{.blu}, uguale ai dati riuniti
+- apprendimento: allenamenti combinati, dipende da come si allena
+- **Che cosa cambia** · modelli che nessun ospedale fa da solo
+- **Limiti** · [nessuno dei due è immune]{.rosso}
+::::
 
-## Dati sintetici e biobanca digitale {#t3 .sezione}
+La differenza dall'analisi federata non sta nel numero di giri. Nell'analisi ogni richiesta è a sé: l'ospedale risponde e non tiene un modello comune, i conti li tiene chi analizza, e nessuno in mezzo conserva qualcosa fra una domanda e l'altra: la rete tecnica nasce con la domanda e finisce con lei. Nell'apprendimento un coordinatore tiene il modello comune e lo fa crescere giro dopo giro: la rete è il sistema. E cambia che cosa calcola ogni centro: nell'analisi federata, pezzi esatti di un unico calcolo, e per questo il risultato è lo stesso dei dati riuniti; nell'apprendimento, un allenamento per conto suo, poi combinato con quelli degli altri, e per questo il risultato dipende da come lo si allena e da quanto differiscono i pazienti dei centri.
+
+**Che cosa cambia.** Si costruiscono modelli che nessun ospedale avrebbe abbastanza casi per costruire da solo, senza riunire i dati dei pazienti: conta soprattutto dove i casi sono rari o gli esempi costosi, come le immagini diagnostiche.
+
+**Limiti.** Nessuno dei due metodi è immune. Nell'analisi federata i risultati su pochi pazienti possono esporre dati, o molte statistiche su sottogruppi incrociati. Nell'apprendimento federato ciò che viaggia non è innocuo: come da certe correzioni si capisce che cosa ha visto chi le ha fatte, da un aggiornamento si può risalire a singoli pazienti, o capire se una persona c'era; e lo stesso vale per il modello finito. Esistono contromisure, che costano in calcolo e in accuratezza e vanno dichiarate; e chi partecipa va identificato e i suoi contributi controllati, perché anche un centro autorizzato può sbagliare o barare. 
+
+Il modello comune, poi, può funzionare bene in media e male in un centro i cui pazienti sono diversi dagli altri. Infine un limite pratico: se la rete è il sistema, va costruita, e quasi sempre la si costruisce apposta, spesso per un solo studio; le piattaforme per unirsi a una federazione già esistente sono ancora poche.
+:::
+
+## Biobanca digitale e dati sintetici {#t3 .sezione}
 
 ```{=html}
 <svg class="icona-sezione" viewBox="-50 -50 100 100"><use href="#scint" x="-50" y="-50" width="100" height="100"/></svg>
 ```
 
 ::: {.inglese}
-synthetic data, digital biobank
+digital biobank, synthetic data
 :::
 
 ::: {.cosa}
-**Dati sintetici:** dati artificiali generati da un modello che ha imparato le proprietà statistiche di dati reali (per esempio come si legano età, diagnosi ed esiti); non sono i dati di pazienti reali.
-
 **Biobanca:** conserva campioni biologici (sangue, tessuti, DNA) con le informazioni che li descrivono (tipo, data di raccolta, consenso) e li mette a disposizione della ricerca con regole di accesso. **Biobanca digitale:** lo stesso, con campioni digitali al posto di quelli biologici (cartelle cliniche, esami, immagini); qui, dati sintetici.
+
+**Dati sintetici:** dati artificiali generati da un modello che ha imparato le proprietà statistiche di dati reali (per esempio come si legano età, diagnosi ed esiti); non sono i dati di pazienti reali.
+:::
+
+::: notes
+:::: {.gobbo}
+- biobanca: campioni e informazioni, con regole di accesso
+- [i dati sintetici non sono pazienti reali]{.blu}
+::::
 :::
 
 ## Generazione e verifica dei dati sintetici {#s11 .con-mossa}
@@ -444,6 +591,20 @@ synthetic data, digital biobank
 </svg>
 ```
 
+::: notes
+:::: {.gobbo}
+- **Come funziona** · stesso meccanismo, [il modello genera]{.blu}
+- ☞ il generatore si allena nei tre centri
+- [può ricopiare i pazienti insoliti]{.rosso}
+- ☞ la barriera: si prova ad attaccarli; "se non passa, non si rilascia"
+- [vale solo per gli attacchi provati]{.rosso}
+- ☞ la biobanca digitale; "un rilascio aperto non si ritira"
+::::
+
+**Come funziona.** Il terzo passo usa lo stesso meccanismo per uno scopo diverso: nei centri, sempre senza spostare i dati, si allena un modello che invece di prevedere genera. Impara come sono legati fra loro età, diagnosi, esiti, e produce dati nuovi con proprietà statistiche simili. Non sono copie di pazienti, ma un generatore può ricopiarne qualcuno, soprattutto i più insoliti. Per questo, prima di rilasciarli, si prova a risalire ai pazienti con gli attacchi conosciuti: quanto rischio è accettabile è da decidere prima, e se i test non passano non si rilascia niente! Chiaramente il test vale solo contro gli attacchi che testa, e quindi contro attacchi noti.
+
+I dati che li superano, del resto, possono entrare in una biobanca digitale, un archivio di dati e non di campioni. Una biobanca tradizionale concede campioni e dati reali a progetti approvati; questa si può aprire alla ricerca (solo se una valutazione del rischio, documentata e rifatta nel tempo, lo permette). E un rilascio aperto, come una copia consegnata, non si ritira.
+:::
 
 ## A che cosa servono i dati sintetici {#s12 .con-mossa}
 
@@ -455,15 +616,25 @@ synthetic data, digital biobank
 </div>
 ```
 
+::: notes
+:::: {.gobbo}
+- **Che cosa cambia** · provare metodi, prepararsi, insegnare, subito
+- ☞ [il simulatore di volo]{.blu}: ci si allena, si vola sull'aereo
+- possono perdere i pazienti più rari: si riprova sui dati veri
+- **Limiti** · [più somigliano ai veri, più rivelano]{.rosso}
+- non rispondono a domande cliniche
+- [allenare il generatore tratta dati personali]{.rosso}
+::::
 
-## Che cosa cambia {#s13 .risposta}
+**Che cosa cambia.** Chi vuole provare un metodo, preparare un'analisi, addestrare un modello o insegnare può farlo subito, senza chiedere accesso ai dati dei pazienti, e bussare ai dati veri solo quando ha una domanda pronta. Funziona come un simulatore di volo: costruito su dati veri, serve ad allenarsi e a provare le manovre, ma il volo vero si fa sull'aereo. E a differenza di un simulatore, che si programma anche per le emergenze rare, i sintetici possono perdere proprio i gruppi di pazienti più rari: un metodo che va bene su di loro va riprovato sui dati veri.
+
+**Limiti.** Il rischio non è zero: più i sintetici somigliano ai veri, più possono rivelare, e fedeltà e protezione vanno bilanciate. Non sostituiscono i dati reali per rispondere a una domanda clinica: la risposta si cerca sui dati veri, per esempio con un'analisi federata. E allenare il generatore sui dati dei pazienti è un trattamento di dati personali, con tutte le sue regole.
+:::
+
+## Che cosa cambia <span class="tre-simboli"><svg viewBox="0 0 120 84"><use href="#busta"/></svg><svg viewBox="-50 -50 100 100"><use href="#ingr" x="-50" y="-50" width="100" height="100"/></svg><svg viewBox="-50 -50 100 100"><use href="#scint" x="-50" y="-50" width="100" height="100"/></svg></span> {#s13 .risposta}
 
 ::: {.domanda-iniziale}
 Quando i vostri dati entrano in una ricerca, dove vanno?
-:::
-
-::: {.sei-parole}
-I dati possono restare presso chi li custodisce.
 :::
 
 ```{=html}
@@ -473,7 +644,7 @@ I dati possono restare presso chi li custodisce.
   <div>ogni centro tiene i suoi dati</div>
   <svg viewBox="0 0 120 50"><use href="#chiave" style="color:#8A8A87"/></svg>
   <div class="ambito">Uso dei dati sanitari</div>
-  <div>il centro concede l’accesso e può revocarlo</div>
+  <div>il centro concede le interrogazioni e può revocarle</div>
   <svg viewBox="0 0 110 92">
     <rect x="0" y="12" width="40" height="24" rx="4" fill="#C9C9C5"/>
     <rect x="0" y="56" width="40" height="24" rx="4" fill="#C9C9C5"/>
@@ -481,10 +652,31 @@ I dati possono restare presso chi li custodisce.
     <rect x="68" y="34" width="42" height="24" rx="4" fill="#8A8A87"/>
   </svg>
   <div class="ambito">Formato comune</div>
-  <div>tradotto una volta, riusato da tutti gli studi</div>
+  <div>ogni centro porta i suoi dati nello standard, chi li conosce meglio</div>
 </div>
 ```
 
+::: {.sei-parole}
+I dati possono restare presso chi li custodisce.
+:::
+
+::: notes
+:::: {.gobbo}
+- [Tre AMBITI]{.blu} (FA/FL/BBD)
+- [a chi fa ricerca non arrivano i dati dei pazienti]{.blu}
+- ☞ risposta: "non più per forza copiati"
+- **sicura**: [non vuol dire senza rischi]{.rosso}; cercati, misurati, dichiarati
+- **sostenibile**: [ciò che si costruisce resta]{.blu}
+::::
+
+Tre cose diverse, dunque, vanno verso i dati: una domanda, che torna con dei numeri; un modello, che torna con gli aggiornamenti di ogni centro; un generatore, che torna con dati nuovi. In tutti e tre i casi chi fa ricerca non riceve i dati dei pazienti, ma ciò che se ne è ricavato, con protezioni diverse per ciascun metodo.
+
+Torno alla domanda dell'inizio: che cosa succede ai vostri dati quando entrano in una ricerca. La risposta non è più per forza "vengono copiati": i dati possono restare presso chi li custodisce.
+
+Questo cambia tre cose. La ricerca fra più centri: ogni centro tiene i propri dati, e la ricerca va da loro. L'uso dei dati sanitari: chi li custodisce concede le interrogazioni e può revocarle, invece di consegnare copie. La lingua comune: ogni centro porta i propri dati nello standard, ed è chi li conosce meglio a farlo; quando si riuniscono i dati, di solito l'armonizzazione è una sola, fatta al centro per tutti, da chi conosce poco i dati di ciascuno. E la traduzione di ogni centro resta, per gli studi che verranno.
+
+Il titolo di questo intervento è "sanità digitale sicura e sostenibile". Sicura non vuol dire senza rischi: vuol dire che i rischi si cercano, e quelli conosciuti si misurano per quanto si può e si dichiarano, e che quello che esce dai dati passa da controlli che può verificare anche chi non li ha costruiti. Sostenibile vuol dire che quello che si costruisce resta: un ospedale pronto a rispondere alle domande della ricerca, una biobanca di dati sintetici che si possono riusare servono anche dopo la fine di un singolo progetto.
+:::
 
 ## {#s16 .contatti}
 
@@ -493,7 +685,7 @@ Per approfondire o collaborare:
 :::
 
 ::: {.contatto}
-Corrado Lanera, PhD
+Corrado Lanera
 
 Tenure-Track Assistant Professor, UBEP, DCTV, UniPD
 
@@ -514,10 +706,30 @@ Davide Ederle
 Head of Innovation, IRP Città della Speranza ETS · [innovation@irpcds.org]{.mail}
 :::
 
+```{=html}
+<div class="qr-blocco">
+  <svg class="qr" viewBox="0 0 33 33" role="img" aria-label="Codice QR che porta alle slide: https://bit.ly/sanita-digitale-2026" shape-rendering="crispEdges"><path d="M2 2h7v1h-7zM10 2h2v1h-2zM13 2h5v1h-5zM19 2h2v1h-2zM24 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM12 3h1v1h-1zM17 3h1v1h-1zM20 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM30 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM12 4h1v1h-1zM14 4h2v1h-2zM19 4h3v1h-3zM24 4h1v1h-1zM26 4h3v1h-3zM30 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM12 5h3v1h-3zM17 5h1v1h-1zM19 5h3v1h-3zM24 5h1v1h-1zM26 5h3v1h-3zM30 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM17 6h2v1h-2zM20 6h1v1h-1zM22 6h1v1h-1zM24 6h1v1h-1zM26 6h3v1h-3zM30 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h2v1h-2zM14 7h3v1h-3zM22 7h1v1h-1zM24 7h1v1h-1zM30 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h7v1h-7zM11 9h1v1h-1zM13 9h3v1h-3zM17 9h2v1h-2zM20 9h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM8 10h2v1h-2zM14 10h2v1h-2zM17 10h1v1h-1zM21 10h2v1h-2zM25 10h1v1h-1zM28 10h1v1h-1zM30 10h1v1h-1zM2 11h1v1h-1zM4 11h1v1h-1zM6 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM17 11h1v1h-1zM21 11h2v1h-2zM24 11h2v1h-2zM29 11h2v1h-2zM3 12h1v1h-1zM5 12h1v1h-1zM8 12h1v1h-1zM10 12h2v1h-2zM13 12h1v1h-1zM15 12h4v1h-4zM21 12h2v1h-2zM25 12h1v1h-1zM27 12h2v1h-2zM30 12h1v1h-1zM2 13h1v1h-1zM4 13h4v1h-4zM10 13h1v1h-1zM12 13h2v1h-2zM16 13h2v1h-2zM20 13h1v1h-1zM22 13h1v1h-1zM25 13h3v1h-3zM3 14h3v1h-3zM7 14h3v1h-3zM11 14h7v1h-7zM21 14h1v1h-1zM24 14h2v1h-2zM30 14h1v1h-1zM2 15h3v1h-3zM7 15h1v1h-1zM10 15h3v1h-3zM14 15h4v1h-4zM19 15h1v1h-1zM21 15h4v1h-4zM29 15h2v1h-2zM4 16h1v1h-1zM6 16h1v1h-1zM8 16h2v1h-2zM11 16h2v1h-2zM17 16h5v1h-5zM23 16h1v1h-1zM25 16h2v1h-2zM30 16h1v1h-1zM2 17h3v1h-3zM6 17h2v1h-2zM14 17h2v1h-2zM20 17h1v1h-1zM23 17h1v1h-1zM25 17h1v1h-1zM3 18h2v1h-2zM7 18h3v1h-3zM13 18h3v1h-3zM17 18h1v1h-1zM22 18h3v1h-3zM30 18h1v1h-1zM5 19h1v1h-1zM7 19h1v1h-1zM9 19h1v1h-1zM13 19h2v1h-2zM17 19h1v1h-1zM20 19h3v1h-3zM24 19h2v1h-2zM28 19h3v1h-3zM2 20h2v1h-2zM8 20h4v1h-4zM14 20h6v1h-6zM21 20h2v1h-2zM26 20h2v1h-2zM30 20h1v1h-1zM5 21h3v1h-3zM9 21h5v1h-5zM16 21h2v1h-2zM21 21h4v1h-4zM26 21h1v1h-1zM2 22h4v1h-4zM8 22h1v1h-1zM11 22h2v1h-2zM15 22h3v1h-3zM22 22h6v1h-6zM29 22h1v1h-1zM10 23h3v1h-3zM14 23h4v1h-4zM22 23h1v1h-1zM26 23h3v1h-3zM30 23h1v1h-1zM2 24h7v1h-7zM10 24h1v1h-1zM13 24h1v1h-1zM17 24h1v1h-1zM19 24h2v1h-2zM22 24h1v1h-1zM24 24h1v1h-1zM26 24h1v1h-1zM30 24h1v1h-1zM2 25h1v1h-1zM8 25h1v1h-1zM11 25h2v1h-2zM14 25h2v1h-2zM18 25h1v1h-1zM20 25h3v1h-3zM26 25h1v1h-1zM29 25h2v1h-2zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM12 26h4v1h-4zM18 26h1v1h-1zM21 26h7v1h-7zM29 26h2v1h-2zM2 27h1v1h-1zM4 27h3v1h-3zM8 27h1v1h-1zM11 27h1v1h-1zM15 27h1v1h-1zM17 27h1v1h-1zM19 27h1v1h-1zM21 27h1v1h-1zM23 27h1v1h-1zM26 27h3v1h-3zM30 27h1v1h-1zM2 28h1v1h-1zM4 28h3v1h-3zM8 28h1v1h-1zM10 28h2v1h-2zM15 28h3v1h-3zM19 28h1v1h-1zM21 28h2v1h-2zM26 28h1v1h-1zM29 28h2v1h-2zM2 29h1v1h-1zM8 29h1v1h-1zM12 29h5v1h-5zM18 29h1v1h-1zM22 29h1v1h-1zM26 29h2v1h-2zM2 30h7v1h-7zM10 30h1v1h-1zM16 30h3v1h-3zM22 30h1v1h-1zM25 30h3v1h-3zM30 30h1v1h-1z" fill="#2E2E2C"/></svg>
+  <div class="qr-link">bit.ly/sanita-digitale-2026</div>
+</div>
+```
+
+```{=html}
+<div class="grazie">Grazie per l’attenzione<span class="tre-simboli"><svg viewBox="0 0 120 84"><use href="#busta"/></svg><svg viewBox="-50 -50 100 100"><use href="#ingr" x="-50" y="-50" width="100" height="100"/></svg><svg viewBox="-50 -50 100 100"><use href="#scint" x="-50" y="-50" width="100" height="100"/></svg></span></div>
+```
+
+::: notes
+:::: {.gobbo}
+- Dario Gregori: ordinario, a capo dei gruppi in UniPD e IRP
+- Davide Ederle: innovazione, Città della Speranza
+- (a video durante le domande)
+::::
+
+Per saperne di più, approfondire, lavorare insieme, qui trovate i contatti: i miei, quelli del Professor Dario Gregori, l'ordinario a capo dei nostri gruppi di ricerca in università e all'Istituto di Ricerca Pediatrica, e di Davide Ederle, responsabile per l'innovazione alla Città della Speranza. Grazie.
+:::
 
 <!--
   Slide A: referenze verificate il 2026-11-04 una per una (record, DOI, pertinenza);
-  esito e motivi delle scelte in intervento.md, «Slide delle referenze».
+  esito e motivi delle scelte in intervento.md, "Slide delle referenze".
 -->
 
 ## Referenze {#sA .referenze}
@@ -574,3 +786,6 @@ DataSHIELD (datashield.org) · Flower (flower.ai; Beutel DJ et al., arXiv:2007.1
 :::
 :::
 
+::: notes
+Non si presenta: resta nel file, e a video se qualcuno la chiede.
+:::
