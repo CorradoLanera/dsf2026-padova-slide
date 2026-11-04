@@ -1,0 +1,24 @@
+<!--
+  Rotella del mouse: reveal.js con mouseWheel accetta un passo al secondo
+  (attesa fissa nel suo codice), e la rotella sembra bloccata. Qui un passo
+  per ogni scatto: un nuovo passo se la rotella era ferma da 150 ms, oppure
+  se l'ultimo passo è di almeno 350 ms fa (così un trackpad non salta dieci
+  slide con un solo gesto). Incluso con include-after-body in slide.qmd.
+-->
+<script>
+(function () {
+  var ultimoEvento = 0, ultimoPasso = 0;
+  document.addEventListener("wheel", function (e) {
+    if (!window.Reveal || !Reveal.isReady()) return;
+    if (e.target.closest && e.target.closest(".slide-menu, .slide-menu-wrapper")) return;
+    if (Reveal.isOverview && Reveal.isOverview()) return;
+    if (Math.abs(e.deltaY) < 2) return;
+    var ora = Date.now();
+    var ferma = ora - ultimoEvento > 150;
+    ultimoEvento = ora;
+    if (!ferma && ora - ultimoPasso < 350) return;
+    ultimoPasso = ora;
+    if (e.deltaY > 0) Reveal.next(); else Reveal.prev();
+  }, { passive: true });
+})();
+</script>

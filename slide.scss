@@ -1,0 +1,389 @@
+/*-- scss:defaults --*/
+
+// Palette dello storyboard («Linguaggio visivo»)
+$fondo: #FAFAF7;
+$grigio-1: #E5E5E2;
+$grigio-2: #C9C9C5;
+$grigio-3: #9A9A96;
+$grigio-4: #6E6E6B;
+$grigio-5: #4A4A48;
+$testo: #2E2E2C;
+$petrolio: #1F6F8B;
+$rosso: #B5452F;
+
+$font-sistema: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Roboto, Arial, sans-serif;
+
+$body-bg: $fondo;
+$body-color: $testo;
+$link-color: $petrolio;
+$font-family-sans-serif: $font-sistema;
+$presentation-heading-font: $font-sistema;
+$presentation-heading-color: $testo;
+$presentation-heading-font-weight: 600;
+$presentation-heading-text-transform: none;
+$presentation-heading-letter-spacing: normal;
+$presentation-heading-line-height: 1.15;
+// Slide di 1920 x 1080: 28 pt = 37,3 px. Nessun testo sotto i 38 px.
+$presentation-font-size-root: 42px;
+$presentation-h2-font-size: 58px;
+$presentation-h3-font-size: 44px;
+
+/*-- scss:rules --*/
+
+.simboli {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.reveal .slides section.slide {
+  padding: 52px 80px 0 80px;
+  box-sizing: border-box;
+  height: 1080px;
+}
+
+// La frase a video: il messaggio della slide
+.reveal h2 {
+  margin: 0 0 22px 0;
+  max-width: 1760px;
+  font-size: 58px;
+  line-height: 1.15;
+}
+
+// Schemi SVG: tutti nello stesso riquadro 1760 x 800
+.reveal svg.schema {
+  display: block;
+  width: 1760px;
+  height: 800px;
+  margin: 0;
+  overflow: visible;
+}
+.reveal svg text {
+  font-family: $font-sistema;
+  font-size: 38px;
+  fill: $grigio-5;
+}
+.reveal svg text.a { fill: $petrolio; }
+.reveal svg text.r { fill: $rosso; }
+.reveal svg text.t { fill: $testo; font-weight: 600; }
+.reveal svg text.n { fill: $fondo; font-weight: 700; }
+.reveal svg text.m { text-anchor: middle; }
+.reveal svg text.e { text-anchor: end; }
+// Didascalie piccole e grigie (sotto l'uguaglianza, sotto il cancello, ...)
+.reveal svg text.p { fill: $grigio-4; }
+.reveal svg .a { color: $petrolio; }
+.reveal svg .g { color: $grigio-4; }
+.reveal svg .r { color: $rosso; }
+
+// Il simbolo della mossa e la domanda in corso (slide 5-12):
+// piè di pagina fisso in basso a sinistra, su una riga
+$grigio-pie: #8A8A86;
+.reveal .mossa {
+  position: absolute;
+  left: 80px;
+  bottom: 34px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  color: $grigio-pie;
+  font-size: 38px;
+  line-height: 1.15;
+}
+.reveal .mossa svg {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 44px;
+  color: $grigio-pie;
+}
+
+// Segnaposto delle immagini (slide 2 e 7)
+.reveal .segnaposto {
+  width: 1760px;
+  height: 780px;
+  background: $grigio-1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  color: $grigio-5;
+  font-size: 40px;
+  text-align: center;
+}
+.reveal .segnaposto code {
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 40px;
+  color: $petrolio;
+  background: none;
+}
+.reveal .segnaposto p {
+  margin: 0;
+  max-width: 1400px;
+}
+.reveal img.immagine {
+  mix-blend-mode: multiply;
+  display: block;
+  width: 1760px;
+  height: 780px;
+  object-fit: contain;
+  margin: 0;
+}
+
+// Slide 1
+.reveal section.titolo h2 { display: none; }
+.reveal .tit p {
+  font-size: 88px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 150px 0 20px 0;
+  color: $testo;
+}
+.reveal .sottotitolo p,
+.reveal .autore p { margin: 0; }
+.reveal .sottotitolo {
+  font-size: 60px;
+  color: $petrolio;
+  margin: 0 0 90px 0;
+}
+.reveal .autore {
+  font-size: 48px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+.reveal .affiliazioni p,
+.reveal .luogo {
+  font-size: 38px;
+  color: $grigio-5;
+  margin: 0;
+  line-height: 1.3;
+}
+.reveal .luogo {
+  margin-top: 34px;
+}
+.reveal .nota-ia {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  bottom: 48px;
+  font-size: 38px;
+  line-height: 1.3;
+  color: $grigio-4;
+  margin: 0;
+}
+
+// Slide 13: la domanda della slide 2 sta sopra la risposta
+.reveal .slides section.slide.risposta {
+  padding-top: 128px;
+}
+.reveal .domanda-iniziale {
+  position: absolute;
+  top: 52px;
+  left: 80px;
+  font-size: 40px;
+  color: $grigio-4;
+  margin: 0;
+}
+.reveal .domanda-iniziale p { margin: 0; }
+.reveal .sei-parole {
+  font-size: 50px;
+  color: $petrolio;
+  margin: 0 0 56px 0;
+}
+.reveal .visione {
+  display: grid;
+  grid-template-columns: 110px 470px 1fr;
+  column-gap: 36px;
+  row-gap: 44px;
+  align-items: center;
+  font-size: 40px;
+  line-height: 1.25;
+}
+.reveal .visione svg {
+  width: 110px;
+  height: 92px;
+}
+.reveal .visione .ambito {
+  font-weight: 600;
+}
+
+// Slide 14
+.reveal .due-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 120px;
+  margin-top: 250px;
+}
+.reveal .due-meta p { margin: 0; }
+.reveal .due-meta .parola {
+  display: block;
+  font-size: 104px;
+  font-weight: 700;
+  color: $petrolio;
+  margin: 0 0 24px 0;
+  line-height: 1.1;
+}
+.reveal .due-meta .resto {
+  display: block;
+  font-size: 64px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+// Slide 15
+.reveal .per-chi {
+  font-size: 40px;
+  color: $grigio-4;
+  margin: 70px 0 30px 0;
+}
+.reveal .tre-domande p {
+  font-size: 92px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+.reveal .altri {
+  margin-top: 80px;
+}
+.reveal .altri p {
+  font-size: 40px;
+  color: $grigio-5;
+  margin: 0 0 14px 0;
+}
+
+// Slide 16
+// Contatti leggibili da metà sala, tutti in grigio scuro
+.reveal .domande-piccole {
+  font-size: 40px;
+  color: $grigio-4;
+  margin: 0 0 60px 0;
+}
+.reveal .contatto {
+  margin: 0 0 56px 0;
+}
+.reveal .contatto p {
+  font-size: 48px;
+  line-height: 1.3;
+  margin: 0;
+  color: $grigio-5;
+}
+.reveal .contatto p:first-child {
+  font-size: 56px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+// Slide A: referenze in due colonne. Unica eccezione ai 38 px: non si presenta,
+// resta nel file e si mostra solo se qualcuno la chiede.
+.reveal section.referenze h2 { margin-bottom: 14px; }
+.reveal .ref-colonne {
+  column-count: 2;
+  column-gap: 64px;
+  width: 1760px;
+}
+.reveal .ref-gruppo { break-inside: auto; margin-bottom: 10px; }
+.reveal .ref-gruppo p {
+  font-size: 26px;
+  line-height: 1.28;
+  margin: 0 0 7px 0;
+  color: $grigio-5;
+}
+.reveal .ref-gruppo p:first-child {
+  font-size: 28px;
+  color: $petrolio;
+  margin: 6px 0 6px 0;
+  break-after: avoid;
+}
+.reveal .ref-gruppo strong { color: $petrolio; }
+
+// Slide 12: immagine del simulatore con due didascalie
+.reveal .sim-volo img {
+  mix-blend-mode: multiply;
+  display: block;
+  width: 1760px;
+  height: 640px;
+  object-fit: contain;
+  margin: 0;
+}
+.reveal .sim-volo .didascalie {
+  display: flex;
+  justify-content: space-between;
+  width: 1760px;
+  font-size: 48px;
+  color: #4A4A48;
+  margin-top: 10px;
+}
+.reveal .sim-volo .didascalie div { width: 48%; text-align: center; }
+.reveal .sim-volo .didascalie b { color: #1F6F8B; }
+
+// Barra di avanzamento in alto, sottile, nel colore d'accento
+.reveal .progress {
+  top: 0;
+  bottom: auto;
+  height: 8px;
+  color: $petrolio;
+}
+.reveal .slide-number {
+  font-size: 30px;
+  color: $grigio-4;
+  background: none;
+  right: 24px;
+  bottom: 18px;
+}
+
+// Slide di sezione: il nome del metodo, in italiano e in inglese
+.reveal section.sezione h2 {
+  font-size: 104px;
+  font-weight: 700;
+  margin: 230px 0 16px 0;
+}
+.reveal .icona-sezione {
+  position: absolute;
+  left: 80px;
+  top: 60px;
+  width: 170px;
+  height: 150px;
+  color: $petrolio;
+}
+.reveal .inglese p {
+  font-size: 56px;
+  font-style: italic;
+  color: $grigio-4;
+  margin: 0 0 60px 0;
+}
+.reveal .cosa p {
+  font-size: 42px;
+  line-height: 1.3;
+  color: $grigio-5;
+  max-width: 1700px;
+  margin: 0 0 28px 0;
+}
+.reveal .cosa strong { color: $testo; }
+
+// Limiti dell'analisi federata: icona a sinistra, spiegazione a destra
+.reveal .limiti {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  column-gap: 48px;
+  row-gap: 64px;
+  align-items: center;
+  margin-top: 60px;
+}
+.reveal .limiti svg {
+  width: 170px;
+  height: 100px;
+}
+.reveal .limiti p {
+  margin: 0;
+  font-size: 38px;
+  line-height: 1.25;
+  color: $grigio-5;
+}
+.reveal .limiti b { color: $testo; }
+
+// Contatti: indirizzi in evidenza, facili da ritrovare
+.reveal .contatto .mail {
+  color: $petrolio;
+  font-weight: 700;
+}

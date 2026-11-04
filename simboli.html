@@ -1,0 +1,117 @@
+<!--
+  Vocabolario dei simboli degli schemi (storyboard, «Linguaggio visivo»).
+  Incluso una volta prima delle slide (include-before-body in slide.qmd):
+  ogni schema li richiama con <use href="#...">, così lo stesso simbolo
+  è identico in tutte le slide. Il colore dei simboli «mobili» viene da
+  currentColor: class="a" (blu petrolio, solo per ciò che viaggia: buste,
+  cartellini, fogli di correzioni, ingranaggi, scintille, persone sintetiche),
+  class="g" (grigio) o class="r" (rosso, solo copie e rischi) sul <use>.
+  Linee e frecce: grigio #9A9A96, 3 px, marker #fg.
+  Grigi da #E5E5E2 a #4A4A48, accento #1F6F8B, rosso #B5452F, fondo #FAFAF7.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" class="simboli" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- freccia: una sola punta, grigia, per linee di 3 px. Le linee e le frecce
+         sono sempre grigie; il colore sta sugli oggetti che viaggiano. -->
+    <marker id="fg" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9A9A96"/></marker>
+
+    <!-- cilindro grigio: i dati originali; sta sempre dentro un edificio -->
+    <symbol id="dati" viewBox="0 0 80 100">
+      <path d="M0 15 V85 A40 15 0 0 0 80 85 V15 Z" fill="#8A8A87"/>
+      <path d="M0 40 A40 15 0 0 0 80 40 M0 62 A40 15 0 0 0 80 62" fill="none" stroke="#B4B4B0" stroke-width="4"/>
+      <ellipse cx="40" cy="15" rx="40" ry="15" fill="#B4B4B0"/>
+    </symbol>
+
+    <!-- edificio con croce: ospedale o centro -->
+    <symbol id="osp" viewBox="0 0 240 200">
+      <rect x="0" y="60" width="240" height="140" fill="#E5E5E2"/>
+      <rect x="80" y="0" width="80" height="60" fill="#C9C9C5"/>
+      <path d="M112 8 h16 v14 h14 v16 h-14 v14 h-16 v-14 h-14 v-16 h14 z" fill="#FAFAF7"/>
+    </symbol>
+
+    <!-- ospedale con i suoi dati dentro -->
+    <symbol id="osp-dati" viewBox="0 0 240 200">
+      <use href="#osp" width="240" height="200"/>
+      <use href="#dati" x="84" y="92" width="72" height="90"/>
+    </symbol>
+
+    <!-- archivio (centrale o biobanca): un contenitore senza croce -->
+    <symbol id="archivio" viewBox="0 0 240 200">
+      <rect x="0" y="0" width="240" height="200" rx="10" fill="#E5E5E2"/>
+    </symbol>
+
+    <!-- busta con «?»: una domanda -->
+    <symbol id="busta" viewBox="0 0 120 84">
+      <rect width="120" height="84" rx="6" fill="currentColor"/>
+      <path d="M5 7 L60 44 L115 7" fill="none" stroke="#FAFAF7" stroke-width="5" stroke-linejoin="round"/>
+      <text x="60" y="78" text-anchor="middle" font-size="34" font-weight="700" fill="#FAFAF7" style="font-family: 'Segoe UI', system-ui, sans-serif">?</text>
+    </symbol>
+
+    <!-- ingranaggio: un algoritmo che impara -->
+    <symbol id="ingr" viewBox="-50 -50 100 100">
+      <path d="M35.3 -7.2 L47.6 -6.2 L47.6 6.2 L35.3 7.2 L30.0 19.9 L38.1 29.3 L29.3 38.1 L19.9 30.0 L7.2 35.3 L6.2 47.6 L-6.2 47.6 L-7.2 35.3 L-19.9 30.0 L-29.3 38.1 L-38.1 29.3 L-30.0 19.9 L-35.3 7.2 L-47.6 6.2 L-47.6 -6.2 L-35.3 -7.2 L-30.0 -19.9 L-38.1 -29.3 L-29.3 -38.1 L-19.9 -30.0 L-7.2 -35.3 L-6.2 -47.6 L6.2 -47.6 L7.2 -35.3 L19.9 -30.0 L29.3 -38.1 L38.1 -29.3 L30.0 -19.9 Z" fill="currentColor"/>
+      <circle r="14" fill="#FAFAF7"/>
+    </symbol>
+
+    <!-- scintilla: un generatore di dati -->
+    <symbol id="scint" viewBox="-50 -50 100 100">
+      <path d="M-6 -46 C-2 -14 2 -10 34 -6 C2 -2 -2 2 -6 34 C-10 2 -14 -2 -46 -6 C-14 -10 -10 -14 -6 -46 Z" fill="currentColor"/>
+      <path d="M30 14 C31.5 26 32.5 27.5 46 29 C32.5 30.5 31.5 31.5 30 44 C28.5 31.5 27.5 30.5 14 29 C27.5 27.5 28.5 26 30 14 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- punta del cartellino: il corpo è un rettangolo disegnato nello schema -->
+    <symbol id="cart-p" viewBox="0 0 40 72">
+      <path d="M0 36 L32 0 H40 V72 H32 Z" fill="currentColor"/>
+      <circle cx="24" cy="36" r="6" fill="#FAFAF7"/>
+    </symbol>
+
+    <!-- foglio doppio rosso: una copia dei dati -->
+    <symbol id="copia" viewBox="0 0 90 110">
+      <path d="M0 0 H48 L64 16 V84 H0 Z" fill="#B5452F" opacity="0.5"/>
+      <path d="M22 22 H70 L86 38 V106 H22 Z" fill="#B5452F"/>
+      <path d="M70 22 L86 38 H70 Z" fill="#E3B9AE"/>
+      <path d="M32 58 H76 M32 72 H76 M32 86 H62" stroke="#FAFAF7" stroke-width="5"/>
+    </symbol>
+
+    <!-- persona tratteggiata: un dato sintetico, non la copia di un paziente -->
+    <symbol id="pers-s" viewBox="0 0 80 110">
+      <circle cx="40" cy="24" r="19" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="8 6"/>
+      <path d="M4 106 V92 C4 66 20 54 40 54 C60 54 76 66 76 92 V106 Z" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="8 6" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- persona piena: analista, coordinatore, chi fa ricerca -->
+    <symbol id="pers" viewBox="0 0 80 110">
+      <circle cx="40" cy="24" r="21" fill="currentColor"/>
+      <path d="M2 108 V92 C2 64 19 52 40 52 C61 52 78 64 78 92 V108 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- foglio di correzioni: un aggiornamento del modello, non dati -->
+    <symbol id="corr" viewBox="0 0 80 100">
+      <path d="M0 0 H58 L80 22 V100 H0 Z" fill="currentColor"/>
+      <path d="M58 0 L80 22 H58 Z" fill="#FAFAF7" opacity="0.45"/>
+      <path d="M12 40 H44 M12 60 H44 M12 80 H44" stroke="#FAFAF7" stroke-width="5"/>
+      <path d="M54 60 H70 M62 52 V68 M54 80 H70" stroke="#FAFAF7" stroke-width="5"/>
+    </symbol>
+
+    <!-- chiave: chi entra -->
+    <symbol id="chiave" viewBox="0 0 120 50">
+      <circle cx="22" cy="25" r="20" fill="currentColor"/>
+      <circle cx="22" cy="25" r="8" fill="#FAFAF7"/>
+      <path d="M40 20 H118 V30 H106 V44 H96 V30 H86 V40 H76 V30 H40 Z" fill="currentColor"/>
+    </symbol>
+
+    <!-- registro: le richieste registrate -->
+    <symbol id="registro" viewBox="0 0 70 90">
+      <rect x="0" y="0" width="70" height="90" rx="4" fill="currentColor"/>
+      <rect x="6" y="0" width="6" height="90" fill="#FAFAF7" opacity="0.5"/>
+      <path d="M22 22 H60 M22 38 H60 M22 54 H60 M22 70 H50" stroke="#FAFAF7" stroke-width="4"/>
+    </symbol>
+
+    <!-- maschera: pseudonimizzati, non anonimi -->
+    <symbol id="maschera" viewBox="0 0 140 70">
+      <path d="M8 14 C40 2 100 2 132 14 C138 40 122 64 98 64 C84 64 78 50 70 50 C62 50 56 64 42 64 C18 64 2 40 8 14 Z" fill="currentColor"/>
+      <ellipse cx="42" cy="32" rx="16" ry="10" fill="#FAFAF7"/>
+      <ellipse cx="98" cy="32" rx="16" ry="10" fill="#FAFAF7"/>
+    </symbol>
+  </defs>
+</svg>
